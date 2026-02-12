@@ -84,6 +84,17 @@
 - 基于 Fastify Multipart 支持。
 - 实现了 OSS (Object Storage Service) 抽象，支持本地存储或云存储 (七牛云/MinIO 等)。
 
+### 5.4 实时通信 (WebSocket)
+
+- 基于 `Socket.io`。
+- 网关基类: `src/socket/base.gateway.ts`。
+- 业务事件常量: `src/socket/business-event.constant.ts`。
+
+### 5.5 其他特性
+
+- **接口幂等**: 使用 `@Idempotence` 装饰器防止重复提交。
+- **邮件服务**: 支持 Handlebars 模板 (`.hbs`)，模板位于 `src/assets/templates`。
+
 ## 6. 开发工作流 (Workflow)
 
 ### 6.1 新增模块流程
@@ -110,6 +121,7 @@
 | &nbsp;&nbsp;- 用户管理 | `system/user/` | 管理员账号管理。 |
 | &nbsp;&nbsp;- 角色权限 | `system/role/`, `system/menu/` | RBAC 权限体系。 |
 | **认证中心 (Auth)** | `auth/` | 登录、注册、Token 刷新、验证码逻辑。 |
+| **工具模块 (Tools)** | `tools/` | 开发辅助工具，如上传接口测试、富文本存储等。 |
 | **网盘存储 (Netdisk)** | `netdisk/` | 文件上传、管理、目录结构。 |
 | **任务调度 (Tasks)** | `tasks/` | 系统计划任务管理。 |
 | **待办事项 (Todo)** | `todo/` | 简单的待办示例模块。 |

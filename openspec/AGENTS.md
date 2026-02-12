@@ -70,6 +70,23 @@
 - 不要硬编码配置 (Secrets, URLs)，始终通过 `ConfigService` 读取环境变量。
 - 示例: `this.configService.get('database.host')`
 
+### 7.4 🌟 自定义字段装饰器 (Field Decorators)
+- **极度推荐**: 使用 `src/common/decorators/field.decorator.ts` 中的组合装饰器，而非手动堆叠 `class-validator`。
+- 优点: 自动处理了类型转换 (Transform) 和 验证 (Validation)。
+- 示例:
+  ```typescript
+  // 推荐 ✅
+  @StringField({ minLength: 6, required: true })
+  password: string;
+
+  // 避免 ❌
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(6)
+  password: string;
+  ```
+
 ## 8. 专项技能 (Skills)
 
 ### 8.1 🗄️ 数据库专家 (TypeORM)
@@ -108,6 +125,13 @@
   - **Pipes**: 用于参数验证与转换 (Validation)。
   - **Filters**: 用于全局异常捕获。
   - 避免将所有逻辑都塞进 Service，合理利用 AOP 切面编程。
+
+### 8.7 ⚡ 实时通信专家 (WebSocket)
+- **场景**: 实现消息推送或实时交互。
+- **要求**:
+  - 必须继承 `src/socket/base.gateway.ts` 中的 `BaseGateway`。
+  - 所有的事件名称 (Event Name) 必须定义在 `src/socket/business-event.constant.ts` 中。
+  - 避免在 Gateway 中写复杂业务，应调用 Service。
 
 ### 8.4 📝 Git 提交专家 (Git Commit)
 - **必须**遵循 Angular Commit Convention。
