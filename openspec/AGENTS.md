@@ -58,7 +58,7 @@
     @ApiProperty()
     @IsString()
     @MinLength(4)
-    username: string;
+    username: string
   }
   ```
 
@@ -92,6 +92,22 @@
   - 敏感操作必须检查 `Current User` 的权限。
   - 密码**必须**通过 `bcrypt` 或 `argon2` 哈希存储，**严禁**明文存储。
   - 敏感字段 (如 password, salt) 在 Entity 中应标记 `ws-select: false` 或在 Transformer 中排除。
+
+### 8.5 🧪 测试工程师 (Testing)
+- **场景**: 编写单元测试或集成测试。
+- **要求**:
+  - 必须使用 `Jest` 框架。
+  - 单元测试 (`.spec.ts`) 应 Mock 所有的依赖服务 (使用 `createMock` 或自定义 Mock)。
+  - 测试用例描述 (Describe/It) 必须清晰易懂。
+
+### 8.6 🏗️ 架构设计师 (Architecture)
+- **场景**: 决定代码放置位置或引入新模式。
+- **要求**:
+  - **Interceptors**: 用于响应转换 (Transform) 或统一日志记录。
+  - **Guards**: 用于权限校验 (Auth)。
+  - **Pipes**: 用于参数验证与转换 (Validation)。
+  - **Filters**: 用于全局异常捕获。
+  - 避免将所有逻辑都塞进 Service，合理利用 AOP 切面编程。
 
 ### 8.4 📝 Git 提交专家 (Git Commit)
 - **必须**遵循 Angular Commit Convention。
