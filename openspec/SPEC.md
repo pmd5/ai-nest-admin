@@ -8,7 +8,7 @@
 - **语言:** TypeScript 5.x
 - **数据库:** MySQL 8.0+
 - **ORM:** TypeORM
-- **缓存:** Redis (使用 `@liaoliaots/nestjs-redis`)
+- **缓存:** Redis (使用 `ioredis`)
 - **消息队列:** Bull (基于 Redis)
 - **API 文档:** Swagger (`@nestjs/swagger`)
 - **包管理器:** pnpm

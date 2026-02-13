@@ -99,7 +99,7 @@
 ### 8.2 ⚡ 缓存专家 (Redis)
 - **场景**: 性能优化或临时存储。
 - **要求**:
-  - 使用 `@liaoliaots/nestjs-redis` 或 `InjectRedis()` 注入 Redis 客户端。
+  - 使用 `InjectRedis()` 注入 Redis 客户端 (ioredis 实例)。
   - Key 命名必须规范，通常格式为 `project:module:id` (e.g., `nest-admin:auth:token:123`).
   - 始终设置过期时间 (TTL) 以防止内存泄漏。
 
